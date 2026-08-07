@@ -1,0 +1,49 @@
+;
+; MyStarterDriver.inf
+;
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=Sample
+ClassGuid={78A1C341-4539-11d3-B88D-00C04FAD5171}
+Provider=%ManufacturerName%
+DriverVer=08/07/2026,1.0.0.0
+CatalogFile=MyStarterDriver.cat
+PnpLockdown=1
+
+[DestinationDirs]
+DefaultDestDir=12
+
+[SourceDisksNames]
+1=%DiskName%,,,
+
+[SourceDisksFiles]
+MyStarterDriver.sys=1
+
+[Manufacturer]
+%ManufacturerName%=Standard,NTamd64
+
+[Standard.NTamd64]
+%DeviceName%=MyStarterDriver_Install, Root\MyStarterDriver
+
+[MyStarterDriver_Install.NT]
+CopyFiles=DriverCopyFiles
+
+[DriverCopyFiles]
+MyStarterDriver.sys
+
+[MyStarterDriver_Install.NT.Services]
+AddService=MyStarterDriver,0x00000002,MyStarterDriver_Service
+
+[MyStarterDriver_Service]
+DisplayName=%ServiceName%
+ServiceType=1
+StartType=3
+ErrorControl=1
+ServiceBinary=%12%\MyStarterDriver.sys
+
+[Strings]
+ManufacturerName="LocalDev"
+DeviceName="My Starter Driver"
+ServiceName="MyStarterDriver"
+DiskName="MyStarterDriver Installation Disk"

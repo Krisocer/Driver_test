@@ -1,0 +1,65 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Check driver environment",
+      "type": "shell",
+      "command": "powershell",
+      "args": [
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "${workspaceFolder}\\scripts\\check-env.ps1"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "Build driver Debug x64 (manual cl/link fallback)",
+      "type": "shell",
+      "command": "powershell",
+      "args": [
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "${workspaceFolder}\\scripts\\build-manual.ps1",
+        "-Configuration",
+        "Debug",
+        "-Platform",
+        "x64"
+      ],
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "Test-sign driver",
+      "type": "shell",
+      "command": "powershell",
+      "args": [
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "${workspaceFolder}\\scripts\\sign-test.ps1"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "Build driver Debug x64",
+      "type": "shell",
+      "command": "powershell",
+      "args": [
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "${workspaceFolder}\\scripts\\build.ps1",
+        "-Configuration",
+        "Debug",
+        "-Platform",
+        "x64"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": "$msCompile"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+#pragma once
+
+#define MYSTARTER_DEVICE_NAME L"\\Device\\MyStarterDriver"
+#define MYSTARTER_SYMBOLIC_LINK L"\\DosDevices\\MyStarterDriver"
+#define MYSTARTER_USER_DEVICE_NAME L"\\\\.\\MyStarterDriver"
+
+#define FILE_DEVICE_MYSTARTER 0x8000
+
+#define IOCTL_MYSTARTER_PING \
+    CTL_CODE(FILE_DEVICE_MYSTARTER, 0x801, METHOD_BUFFERED, FILE_ANY_ACCESS)

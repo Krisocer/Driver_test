@@ -1,0 +1,22 @@
+# Build outputs
+x64/
+MyStarterDriver/
+
+# MSVC/WDK intermediates
+*.obj
+*.pdb
+*.idb
+*.ilk
+*.tlog
+*.lastbuildstate
+*.recipe
+*.sys
+*.cat
+*.dll
+*.lib
+*.exp
+
+# Local/editor noise
+.vs/
+*.user
+*.suo
